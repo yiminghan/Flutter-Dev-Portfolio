@@ -28,7 +28,7 @@ class _LandingScreenState extends State<LandingScreen> {
         child: _menuOpen
             ? NavigationRail(
                 groupAlignment: 0.0,
-                minWidth: 40,
+                minWidth: 56,
                 selectedIndex: _selectedIndex,
                 onDestinationSelected: (int index) {
                   setState(() {
