@@ -13,39 +13,63 @@ class LandingScreen extends StatefulWidget {
 enum SideMenu { Home, About, Portfolio, Contact }
 
 class _LandingScreenState extends State<LandingScreen> {
-  Widget _popUpMenu() {
-    return PopupMenuButton(
-      icon: FaIcon(FontAwesomeIcons.caretSquareDown),
-      onSelected: (SideMenu result) {
-        setState(() {
-          //TODO: change page
+  int _selectedIndex = 0;
+  bool _menuOpen = false;
+
+  Widget _sideNavigationRail() {
+    //TODO: use SlideTransition Instead
+    return AnimatedSwitcher(
+        transitionBuilder: (Widget child, Animation<double> animation) =>
+            ScaleTransition(
+              child: child,
+              scale: animation,
+            ),
+        duration: Duration(milliseconds: 200),
+        child: _menuOpen
+            ? NavigationRail(
+                groupAlignment: 0.0,
+                minWidth: 40,
+                selectedIndex: _selectedIndex,
+                onDestinationSelected: (int index) {
+                  setState(() {
+                    _selectedIndex = index;
+                  });
+                },
+                leading: _buildMenuButton(),
+                labelType: NavigationRailLabelType.all,
+                destinations: [
+                  _customNavigationRailDestination("Home"),
+                  _customNavigationRailDestination("About"),
+                  _customNavigationRailDestination("Portfolio"),
+                  _customNavigationRailDestination("Contact"),
+                ],
+              )
+            : _buildMenuButton());
+  }
+
+  Widget _buildMenuButton() {
+    return IconButton(
+        icon: Icon(Icons.menu),
+        onPressed: () {
+          setState(() {
+            _menuOpen = !_menuOpen;
+          });
         });
-      },
-      itemBuilder: (BuildContext context) => <PopupMenuEntry<SideMenu>>[
-        const PopupMenuItem<SideMenu>(
-          value: SideMenu.Home,
-          child: Text('Home'),
-        ),
-        const PopupMenuItem<SideMenu>(
-          value: SideMenu.About,
-          child: Text('About'),
-        ),
-        const PopupMenuItem<SideMenu>(
-          value: SideMenu.Portfolio,
-          child: Text('Portfolio'),
-        ),
-        const PopupMenuItem<SideMenu>(
-          value: SideMenu.Contact,
-          child: Text('Contact'),
-        ),
-      ],
-    );
+  }
+
+  NavigationRailDestination _customNavigationRailDestination(String text) {
+    return NavigationRailDestination(
+        icon: SizedBox.shrink(),
+        label: Center(
+          child: Text(text,
+              style:
+                  GoogleFonts.indieFlower(textStyle: TextStyle(fontSize: 25))),
+        ));
   }
 
   Widget _topBar() {
     return Container(
         child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      _popUpMenu(),
       Expanded(
           child: Align(
               alignment: AlignmentDirectional.topCenter,
@@ -124,11 +148,18 @@ class _LandingScreenState extends State<LandingScreen> {
   }
 
   Widget _buildBody() {
-    return Column(
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Expanded(child: _topBar()),
-        Expanded(child: _aboutMe()),
-        Expanded(child: _bottomRow())
+        _sideNavigationRail(),
+        Expanded(
+            child: Column(
+          children: <Widget>[
+            Expanded(child: _topBar()),
+            Expanded(child: _aboutMe()),
+            Expanded(child: _bottomRow())
+          ],
+        )),
       ],
     );
   }
