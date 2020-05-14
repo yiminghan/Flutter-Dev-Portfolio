@@ -12,49 +12,81 @@ class LandingScreen extends StatefulWidget {
 
 enum SideMenu { Home, About, Portfolio, Contact }
 
-class _LandingScreenState extends State<LandingScreen> {
+class _LandingScreenState extends State<LandingScreen>
+    with SingleTickerProviderStateMixin {
   int _selectedIndex = 0;
   bool _menuOpen = false;
 
+  AnimationController _sideMenuController;
+  Animation<Offset> _sideMenuOffsetAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _sideMenuController = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 300));
+    _sideMenuOffsetAnimation = Tween<Offset>(
+      begin: Offset(-1.0, 0),
+      end: const Offset(0, 0.0),
+    ).animate(
+        CurvedAnimation(curve: Curves.linear, parent: _sideMenuController));
+  }
+
+  @override
+  void dispose() {
+    _sideMenuController.dispose();
+    super.dispose();
+  }
+
   Widget _sideNavigationRail() {
-    //TODO: use SlideTransition Instead
-    return AnimatedSwitcher(
-        transitionBuilder: (Widget child, Animation<double> animation) =>
-            ScaleTransition(
-              child: child,
-              scale: animation,
-            ),
-        duration: Duration(milliseconds: 200),
-        child: _menuOpen
-            ? NavigationRail(
-                groupAlignment: 0.0,
-                minWidth: 56,
-                selectedIndex: _selectedIndex,
-                onDestinationSelected: (int index) {
-                  setState(() {
-                    _selectedIndex = index;
-                  });
-                },
-                leading: _buildMenuButton(),
-                labelType: NavigationRailLabelType.all,
-                destinations: [
-                  _customNavigationRailDestination("Home"),
-                  _customNavigationRailDestination("About"),
-                  _customNavigationRailDestination("Portfolio"),
-                  _customNavigationRailDestination("Contact"),
-                ],
-              )
-            : _buildMenuButton());
+    return Stack(
+      children: <Widget>[
+        SlideTransition(
+            position: _sideMenuOffsetAnimation,
+            child: NavigationRail(
+              backgroundColor: Colors.white,
+              groupAlignment: 0.0,
+              minWidth: 56,
+              selectedIndex: _selectedIndex,
+              onDestinationSelected: (int index) {
+                setState(() {
+                  _selectedIndex = index;
+                });
+              },
+              labelType: NavigationRailLabelType.all,
+              destinations: [
+                _customNavigationRailDestination("Home"),
+                _customNavigationRailDestination("About"),
+                _customNavigationRailDestination("Portfolio"),
+                _customNavigationRailDestination("Contact"),
+              ],
+            )),
+        _buildMenuButton(),
+      ],
+    );
   }
 
   Widget _buildMenuButton() {
-    return IconButton(
-        icon: Icon(Icons.menu),
-        onPressed: () {
-          setState(() {
-            _menuOpen = !_menuOpen;
-          });
-        });
+    return AnimatedSwitcher(
+      switchInCurve: Curves.easeInQuint,
+      switchOutCurve: Curves.easeOutQuint,
+      duration: Duration(milliseconds: 300),
+      transitionBuilder: (Widget child, Animation<double> animation) =>
+          RotationTransition(child: child, turns: animation),
+      child: IconButton(
+          key: ValueKey<bool>(_menuOpen),
+          icon: Icon(_menuOpen ? Icons.close : Icons.menu),
+          onPressed: () {
+            setState(() {
+              if (!_menuOpen) {
+                _sideMenuController.forward(from: 0);
+              } else {
+                _sideMenuController.reverse(from: 1);
+              }
+              _menuOpen = !_menuOpen;
+            });
+          }),
+    );
   }
 
   NavigationRailDestination _customNavigationRailDestination(String text) {
