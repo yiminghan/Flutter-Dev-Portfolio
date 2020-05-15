@@ -10,7 +10,13 @@ class FlutterDevPortfolio extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
-        '/': (context) => LandingScreen(),
+        '/': (context) => LayoutBuilder(
+              builder: (context, constraints) {
+                return LandingScreen(
+                  size: constraints.biggest,
+                );
+              },
+            )
       },
     );
   }

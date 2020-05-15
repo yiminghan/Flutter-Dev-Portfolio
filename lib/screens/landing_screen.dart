@@ -1,10 +1,14 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_dev_portfolio/utils/font_utils.dart';
 import 'package:flutter_dev_portfolio/utils/url_utils.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class LandingScreen extends StatefulWidget {
-  LandingScreen({Key key}) : super(key: key);
+  LandingScreen({Key key, this.size}) : super(key: key);
+
+  final Size size;
 
   @override
   _LandingScreenState createState() => _LandingScreenState();
@@ -92,11 +96,7 @@ class _LandingScreenState extends State<LandingScreen>
   NavigationRailDestination _customNavigationRailDestination(String text) {
     return NavigationRailDestination(
         icon: SizedBox.shrink(),
-        label: Center(
-          child: Text(text,
-              style:
-                  GoogleFonts.indieFlower(textStyle: TextStyle(fontSize: 25))),
-        ));
+        label: Center(child: Text(text, style: getFont(25))));
   }
 
   Widget _topBar() {
@@ -107,8 +107,7 @@ class _LandingScreenState extends State<LandingScreen>
               alignment: AlignmentDirectional.topCenter,
               child: Text(
                 "YiMing Han",
-                style:
-                    GoogleFonts.indieFlower(textStyle: TextStyle(fontSize: 50)),
+                style: getFont(50),
                 textAlign: TextAlign.start,
               ))),
     ]));
@@ -123,10 +122,8 @@ class _LandingScreenState extends State<LandingScreen>
                 child: Align(
                     alignment: Alignment(-0.8, 0),
                     child: Text(
-                      "As a senior mobile engineer\nI create amazing websites and mobile apps",
-                      style: GoogleFonts.indieFlower(
-                          textStyle: TextStyle(fontSize: 25)),
-                    )))
+                        "As a senior mobile engineer\nI create amazing websites and mobile apps",
+                        style: getFont(25))))
           ],
         ));
   }
@@ -142,56 +139,80 @@ class _LandingScreenState extends State<LandingScreen>
         Expanded(
           child: Align(
             alignment: AlignmentDirectional.bottomEnd,
-            child: Text(
-              "@2020 YiMing Han",
-              style:
-                  GoogleFonts.indieFlower(textStyle: TextStyle(fontSize: 14)),
-            ),
+            child: Text("@2020 YiMing Han", style: getFont(14)),
           ),
         )
       ],
     ));
   }
 
+  Widget _externalLink(Widget icon, String url) {
+    return IconButton(
+      icon: icon,
+      onPressed: () {
+        launchURL(url);
+      },
+    );
+  }
+
   Widget _externalLinks() {
     return Container(
         child: Row(
       children: <Widget>[
-        IconButton(
-          icon: FaIcon(FontAwesomeIcons.github),
-          onPressed: () {
-            launchURL("https://github.com/yiminghan");
-          },
-        ),
-        IconButton(
-          icon: FaIcon(FontAwesomeIcons.linkedinIn),
-          onPressed: () {
-            launchURL("https://www.linkedin.com/in/yiming-han-7340b4b1/");
-          },
-        ),
-        IconButton(
-          icon: FaIcon(FontAwesomeIcons.instagram),
-          onPressed: () {
-            launchURL("https://www.instagram.com/yimiihan/");
-          },
-        )
+        _externalLink(
+            FaIcon(FontAwesomeIcons.githubAlt), "https://github.com/yiminghan"),
+        _externalLink(FaIcon(FontAwesomeIcons.linkedin),
+            "https://www.linkedin.com/in/yiming-han-7340b4b1/"),
+        _externalLink(FaIcon(FontAwesomeIcons.instagram),
+            "https://www.instagram.com/yimiihan/"),
       ],
     ));
   }
 
-  Widget _buildBody() {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
+  Widget _buildBackground() {
+    return Stack(
       children: <Widget>[
-        _sideNavigationRail(),
-        Expanded(
-            child: Column(
+        Image(
+            fit: BoxFit.cover,
+            width: double.infinity,
+            height: double.infinity,
+            image: AssetImage('assets/background.jpg'),
+            frameBuilder: (BuildContext context, Widget child, int frame,
+                bool wasSynchronouslyLoaded) {
+              if (wasSynchronouslyLoaded) {
+                return child;
+              }
+              return AnimatedOpacity(
+                child: child,
+                opacity: frame == null ? 0 : 1,
+                duration: const Duration(seconds: 1),
+                curve: Curves.easeOut,
+              );
+            }),
+        BackdropFilter(
+            filter: ImageFilter.blur(
+              sigmaX: 2,
+              sigmaY: 2,
+            ),
+            child: Container(color: Colors.transparent)),
+      ],
+    );
+  }
+
+  Widget _buildBody() {
+    return Stack(
+      children: <Widget>[
+        Expanded(child: _buildBackground()),
+        Column(
           children: <Widget>[
             Expanded(child: _topBar()),
             Expanded(child: _aboutMe()),
             Expanded(child: _bottomRow())
           ],
-        )),
+        ),
+        ConstrainedBox(
+            constraints: BoxConstraints(maxWidth: 150),
+            child: _sideNavigationRail()),
       ],
     );
   }
