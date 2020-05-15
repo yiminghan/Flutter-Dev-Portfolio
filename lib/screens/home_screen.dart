@@ -22,6 +22,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       alignment: Alignment(-0.7, 1),
                       child: TypewriterAnimatedTextKit(
                           onTap: () {},
+                          //TODO: use repeat forever once PR is merged
+                          totalRepeatCount: 9999,
                           speed: Duration(milliseconds: 100),
                           text: [
                             "YiMing Han.",
