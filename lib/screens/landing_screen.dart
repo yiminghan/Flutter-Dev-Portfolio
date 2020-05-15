@@ -1,24 +1,19 @@
 import 'dart:ui';
 
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dev_portfolio/screens/home_screen.dart';
 import 'package:flutter_dev_portfolio/utils/font_utils.dart';
-import 'package:flutter_dev_portfolio/utils/url_utils.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class LandingScreen extends StatefulWidget {
-  LandingScreen({Key key, this.size}) : super(key: key);
-
-  final Size size;
+class Screens extends StatefulWidget {
+  Screens({Key key}) : super(key: key);
 
   @override
-  _LandingScreenState createState() => _LandingScreenState();
+  _ScreensState createState() => _ScreensState();
 }
 
 enum SideMenu { Home, About, Portfolio, Contact }
 
-class _LandingScreenState extends State<LandingScreen>
-    with SingleTickerProviderStateMixin {
+class _ScreensState extends State<Screens> with SingleTickerProviderStateMixin {
   int _selectedIndex = 0;
   bool _menuOpen = false;
 
@@ -107,76 +102,6 @@ class _LandingScreenState extends State<LandingScreen>
                 Text(text, style: getFont(18).copyWith(color: Colors.black))));
   }
 
-  Widget _aboutMe() {
-    return Container(
-        padding: EdgeInsets.all(24),
-        child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Expanded(
-                  child: Align(
-                      alignment: Alignment(-0.7, 1),
-                      child: TypewriterAnimatedTextKit(
-                          onTap: () {},
-                          speed: Duration(milliseconds: 100),
-                          text: [
-                            "YiMing Han.",
-                            "Software Developer.",
-                            "Casual Photographer.",
-                            "Kendo Player.",
-                          ],
-                          textStyle: getFont(25),
-                          textAlign: TextAlign.start,
-                          alignment: AlignmentDirectional.topStart)))
-            ]));
-  }
-
-  Widget _bottomRow() {
-    return Container(
-        child: Row(
-      crossAxisAlignment: CrossAxisAlignment.end,
-      children: <Widget>[
-        Expanded(
-          child: _externalLinks(),
-        ),
-        Expanded(
-          child: Align(
-            alignment: AlignmentDirectional.bottomEnd,
-            child: Text("@2020 YiMing Han", style: getFont(14)),
-          ),
-        )
-      ],
-    ));
-  }
-
-  Widget _externalLinkButton(Widget icon, String url) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: FloatingActionButton(
-        backgroundColor: Colors.transparent,
-        shape: CircleBorder(),
-        child: icon,
-        onPressed: () {
-          launchURL(url);
-        },
-      ),
-    );
-  }
-
-  Widget _externalLinks() {
-    return Container(
-        child: Row(
-      children: <Widget>[
-        _externalLinkButton(
-            FaIcon(FontAwesomeIcons.github), "https://github.com/yiminghan"),
-        _externalLinkButton(FaIcon(FontAwesomeIcons.linkedin),
-            "https://www.linkedin.com/in/yiming-han-7340b4b1/"),
-        _externalLinkButton(FaIcon(FontAwesomeIcons.instagram),
-            "https://www.instagram.com/yimiihan/"),
-      ],
-    ));
-  }
-
   Widget _buildBackground() {
     return Stack(
       children: <Widget>[
@@ -207,16 +132,21 @@ class _LandingScreenState extends State<LandingScreen>
     );
   }
 
+  Widget getScreen() {
+    switch (_selectedIndex) {
+      case 0:
+        return HomeScreen();
+        break;
+      default:
+        return HomeScreen();
+    }
+  }
+
   Widget _buildBody() {
     return Stack(
       children: <Widget>[
         Expanded(child: _buildBackground()),
-        Column(
-          children: <Widget>[
-            Expanded(child: _aboutMe()),
-            Expanded(child: _bottomRow())
-          ],
-        ),
+        HomeScreen(),
         ConstrainedBox(
             constraints: BoxConstraints(maxWidth: 120),
             child: _sideNavigationRail()),

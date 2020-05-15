@@ -12,9 +12,7 @@ class FlutterDevPortfolio extends StatelessWidget {
       routes: {
         '/': (context) => LayoutBuilder(
               builder: (context, constraints) {
-                return LandingScreen(
-                  size: constraints.biggest,
-                );
+                return Screens();
               },
             )
       },
