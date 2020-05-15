@@ -48,7 +48,7 @@ class _LandingScreenState extends State<LandingScreen>
         SlideTransition(
             position: _sideMenuOffsetAnimation,
             child: NavigationRail(
-              backgroundColor: Colors.white,
+              backgroundColor: Colors.white.withOpacity(0.75),
               groupAlignment: 0.0,
               minWidth: 56,
               selectedIndex: _selectedIndex,
@@ -77,9 +77,14 @@ class _LandingScreenState extends State<LandingScreen>
       duration: Duration(milliseconds: 300),
       transitionBuilder: (Widget child, Animation<double> animation) =>
           RotationTransition(child: child, turns: animation),
-      child: IconButton(
+      child: FloatingActionButton(
           key: ValueKey<bool>(_menuOpen),
-          icon: Icon(_menuOpen ? Icons.close : Icons.menu),
+          backgroundColor: Colors.transparent,
+          elevation: _menuOpen ? 0 : 5,
+          child: Icon(
+            _menuOpen ? Icons.close : Icons.menu,
+            color: _menuOpen ? Colors.black : Colors.white,
+          ),
           onPressed: () {
             setState(() {
               if (!_menuOpen) {
@@ -147,11 +152,16 @@ class _LandingScreenState extends State<LandingScreen>
   }
 
   Widget _externalLink(Widget icon, String url) {
-    return IconButton(
-      icon: icon,
-      onPressed: () {
-        launchURL(url);
-      },
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: FloatingActionButton(
+        backgroundColor: Colors.transparent,
+        shape: CircleBorder(),
+        child: icon,
+        onPressed: () {
+          launchURL(url);
+        },
+      ),
     );
   }
 
@@ -160,7 +170,7 @@ class _LandingScreenState extends State<LandingScreen>
         child: Row(
       children: <Widget>[
         _externalLink(
-            FaIcon(FontAwesomeIcons.githubAlt), "https://github.com/yiminghan"),
+            FaIcon(FontAwesomeIcons.github), "https://github.com/yiminghan"),
         _externalLink(FaIcon(FontAwesomeIcons.linkedin),
             "https://www.linkedin.com/in/yiming-han-7340b4b1/"),
         _externalLink(FaIcon(FontAwesomeIcons.instagram),
@@ -211,7 +221,7 @@ class _LandingScreenState extends State<LandingScreen>
           ],
         ),
         ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: 150),
+            constraints: BoxConstraints(maxWidth: 120),
             child: _sideNavigationRail()),
       ],
     );
