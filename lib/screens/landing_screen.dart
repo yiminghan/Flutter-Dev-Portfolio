@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dev_portfolio/utils/font_utils.dart';
 import 'package:flutter_dev_portfolio/utils/url_utils.dart';
@@ -101,36 +102,33 @@ class _LandingScreenState extends State<LandingScreen>
   NavigationRailDestination _customNavigationRailDestination(String text) {
     return NavigationRailDestination(
         icon: SizedBox.shrink(),
-        label: Center(child: Text(text, style: getFont(25))));
-  }
-
-  Widget _topBar() {
-    return Container(
-        child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      Expanded(
-          child: Align(
-              alignment: AlignmentDirectional.topCenter,
-              child: Text(
-                "YiMing Han",
-                style: getFont(50),
-                textAlign: TextAlign.start,
-              ))),
-    ]));
+        label: Center(
+            child:
+                Text(text, style: getFont(18).copyWith(color: Colors.black))));
   }
 
   Widget _aboutMe() {
     return Container(
         padding: EdgeInsets.all(24),
-        child: Row(
-          children: <Widget>[
-            Expanded(
-                child: Align(
-                    alignment: Alignment(-0.8, 0),
-                    child: Text(
-                        "As a senior mobile engineer\nI create amazing websites and mobile apps",
-                        style: getFont(25))))
-          ],
-        ));
+        child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Expanded(
+                  child: Align(
+                      alignment: Alignment(-0.7, 1),
+                      child: TypewriterAnimatedTextKit(
+                          onTap: () {},
+                          speed: Duration(milliseconds: 100),
+                          text: [
+                            "YiMing Han.",
+                            "Software Developer.",
+                            "Casual Photographer.",
+                            "Kendo Player.",
+                          ],
+                          textStyle: getFont(25),
+                          textAlign: TextAlign.start,
+                          alignment: AlignmentDirectional.topStart)))
+            ]));
   }
 
   Widget _bottomRow() {
@@ -151,7 +149,7 @@ class _LandingScreenState extends State<LandingScreen>
     ));
   }
 
-  Widget _externalLink(Widget icon, String url) {
+  Widget _externalLinkButton(Widget icon, String url) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: FloatingActionButton(
@@ -169,11 +167,11 @@ class _LandingScreenState extends State<LandingScreen>
     return Container(
         child: Row(
       children: <Widget>[
-        _externalLink(
+        _externalLinkButton(
             FaIcon(FontAwesomeIcons.github), "https://github.com/yiminghan"),
-        _externalLink(FaIcon(FontAwesomeIcons.linkedin),
+        _externalLinkButton(FaIcon(FontAwesomeIcons.linkedin),
             "https://www.linkedin.com/in/yiming-han-7340b4b1/"),
-        _externalLink(FaIcon(FontAwesomeIcons.instagram),
+        _externalLinkButton(FaIcon(FontAwesomeIcons.instagram),
             "https://www.instagram.com/yimiihan/"),
       ],
     ));
@@ -215,7 +213,6 @@ class _LandingScreenState extends State<LandingScreen>
         Expanded(child: _buildBackground()),
         Column(
           children: <Widget>[
-            Expanded(child: _topBar()),
             Expanded(child: _aboutMe()),
             Expanded(child: _bottomRow())
           ],
