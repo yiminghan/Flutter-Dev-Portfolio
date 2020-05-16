@@ -1,3 +1,5 @@
+import 'dart:html' as html;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_dev_portfolio/data/app_data.dart';
 import 'package:flutter_dev_portfolio/models/models.dart';
@@ -24,6 +26,10 @@ class _WorkExperienceScreenState extends State<WorkExperienceScreen> {
     );
   }
 
+  void serveResume() {
+    html.window.open("http://yiminghan.com/Resume_YiMing.pdf", 'Resume.pdf');
+  }
+
   Widget _workExperience() {
     return Container(
         width: double.infinity,
@@ -31,12 +37,26 @@ class _WorkExperienceScreenState extends State<WorkExperienceScreen> {
         padding: EdgeInsets.symmetric(horizontal: 150),
         child: Scrollbar(
           child: ListView(children: <Widget>[
+            Divider(height: 32),
             Container(
-              padding: EdgeInsets.only(top: 32),
-              child: Text(
-                "Places I have worked at",
-                style: getFont(25),
-                textAlign: TextAlign.start,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Text(
+                    "Places I have worked at",
+                    style: getFont(25),
+                    textAlign: TextAlign.start,
+                  ),
+                  ActionChip(
+                    label: Text(
+                      "Download Resume",
+                      style: getFont(25).copyWith(color: Colors.black),
+                      textAlign: TextAlign.start,
+                    ),
+                    avatar: Icon(Icons.file_download),
+                    onPressed: serveResume,
+                  ),
+                ],
               ),
             ),
             Divider(height: 32),
