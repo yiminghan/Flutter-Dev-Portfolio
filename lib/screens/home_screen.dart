@@ -25,11 +25,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           //TODO: use repeat forever once PR is merged
                           totalRepeatCount: 9999,
                           speed: Duration(milliseconds: 100),
+                          pause: Duration(seconds: 5),
                           text: [
-                            "YiMing Han.",
-                            "Software Developer.",
-                            "Casual Photographer.",
-                            "Kendo Player.",
+                            "YiMing Han. \nSoftware Developer.",
                           ],
                           textStyle: getFont(25),
                           textAlign: TextAlign.start,
