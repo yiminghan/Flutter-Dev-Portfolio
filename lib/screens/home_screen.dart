@@ -11,7 +11,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  Widget _aboutMe() {
+  Widget _landingLabel() {
     return Container(
         padding: EdgeInsets.all(24),
         child: Column(
@@ -41,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        Expanded(child: _aboutMe()),
+        Expanded(child: _landingLabel()),
         Expanded(child: Footer())
       ],
     );

@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_dev_portfolio/screens/about_screen.dart';
 import 'package:flutter_dev_portfolio/screens/home_screen.dart';
 import 'package:flutter_dev_portfolio/utils/font_utils.dart';
 
@@ -14,7 +15,7 @@ class Screens extends StatefulWidget {
 enum SideMenu { Home, About, Portfolio, Contact }
 
 class _ScreensState extends State<Screens> with SingleTickerProviderStateMixin {
-  int _selectedIndex = 0;
+  int _selectedIndex = 1;
   bool _menuOpen = false;
 
   AnimationController _sideMenuController;
@@ -49,6 +50,7 @@ class _ScreensState extends State<Screens> with SingleTickerProviderStateMixin {
               minWidth: 56,
               selectedIndex: _selectedIndex,
               onDestinationSelected: (int index) {
+                print("selected destination $index");
                 setState(() {
                   _selectedIndex = index;
                 });
@@ -132,10 +134,13 @@ class _ScreensState extends State<Screens> with SingleTickerProviderStateMixin {
     );
   }
 
-  Widget getScreen() {
+  Widget _getScreen() {
     switch (_selectedIndex) {
       case 0:
         return HomeScreen();
+        break;
+      case 1:
+        return AboutScreen();
         break;
       default:
         return HomeScreen();
@@ -145,8 +150,8 @@ class _ScreensState extends State<Screens> with SingleTickerProviderStateMixin {
   Widget _buildBody() {
     return Stack(
       children: <Widget>[
-        Expanded(child: _buildBackground()),
-        HomeScreen(),
+        _buildBackground(),
+        _getScreen(),
         ConstrainedBox(
             constraints: BoxConstraints(maxWidth: 120),
             child: _sideNavigationRail()),
