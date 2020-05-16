@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dev_portfolio/data/app_data.dart';
 import 'package:flutter_dev_portfolio/models/models.dart';
 import 'package:flutter_dev_portfolio/utils/font_utils.dart';
 import 'package:flutter_dev_portfolio/widgets/footer.dart';
@@ -11,17 +12,6 @@ class WorkExperienceScreen extends StatefulWidget {
 }
 
 class _WorkExperienceScreenState extends State<WorkExperienceScreen> {
-  List<WorkModel> workPositions = [
-    WorkModel(
-        company: "Modiface",
-        position: "Android Developer",
-        bulletPoints: [
-          "Modiface primarily focuses on AR techonology to aid the beauty industry. My primary work includes working to build out features for clients, maintaining the Android SDKs that we ship out."
-        ],
-        from: "Jan 2020",
-        to: "Present")
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -37,11 +27,12 @@ class _WorkExperienceScreenState extends State<WorkExperienceScreen> {
   Widget _workExperience() {
     return Container(
         width: double.infinity,
-        decoration: BoxDecoration(color: Colors.black.withOpacity(0.25)),
-        padding: EdgeInsets.symmetric(horizontal: 150, vertical: 50),
+        decoration: BoxDecoration(color: Colors.black.withOpacity(0.5)),
+        padding: EdgeInsets.symmetric(horizontal: 150),
         child: Scrollbar(
           child: ListView(children: <Widget>[
             Container(
+              padding: EdgeInsets.only(top: 32),
               child: Text(
                 "Places I have worked at",
                 style: getFont(25),
@@ -50,6 +41,7 @@ class _WorkExperienceScreenState extends State<WorkExperienceScreen> {
             ),
             Divider(height: 32),
             _workPositions(),
+            Divider(height: 32),
           ]),
         ));
   }
@@ -61,6 +53,7 @@ class _WorkExperienceScreenState extends State<WorkExperienceScreen> {
 
   Widget _buildWorkCard(WorkModel item) {
     return Container(
+      padding: EdgeInsets.only(top: 32),
       decoration: BoxDecoration(),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -73,11 +66,12 @@ class _WorkExperienceScreenState extends State<WorkExperienceScreen> {
                 style: getFont(28),
                 textAlign: TextAlign.start,
               ),
-              Text(
-                "${item.from} - ${item.to}",
-                style: getFont(28),
-                textAlign: TextAlign.end,
-              )
+              if (item.from != null && item.to != null)
+                Text(
+                  "${item.from} - ${item.to}",
+                  style: getFont(28),
+                  textAlign: TextAlign.end,
+                )
             ],
           ),
           Text(

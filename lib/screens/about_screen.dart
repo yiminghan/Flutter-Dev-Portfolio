@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dev_portfolio/data/app_data.dart';
 import 'package:flutter_dev_portfolio/utils/font_utils.dart';
 import 'package:flutter_dev_portfolio/widgets/footer.dart';
 
@@ -10,78 +11,12 @@ class AboutScreen extends StatefulWidget {
 }
 
 class _AboutScreenState extends State<AboutScreen> {
-  String aboutMe = "Hey 👋 I'm YiMing Han";
-  String aboutMeSubHeader = "A Senior Mobile Developer from Toronto 🇨🇦";
-  String aboutMeText =
-      "I'm a Problem Solver first, Developer second. To me, programming languages and frameworks are just tools to solve problems." +
-          " I do not hesistate to learn new techonolgies neccessary to solve the Problem at hand.\n\n" +
-          "I am currently 24, and I have been developing for almost 5 years." +
-          " Even outside of my work I find myself building cool apps and contributing to open source projects." +
-          " My current focus is on Mobile Develoment.\n\n" +
-          "When I'm not writing code I spend time with Dota2, Kendo, and Photography.";
-
-  List<String> androidSkills = [
-    "Kotlin",
-    "Kotlin Corotines",
-    "Java",
-    "C/C++ (OpenGL ES)",
-    "AndroidX",
-    "Android Jetpack",
-    "Jetpack Compose",
-    "Firebase",
-    "Realm / Room",
-    "Retrofit",
-    "Dagger",
-    "Mockito",
-    "Espresso",
-    "ARCore",
-  ];
-
-  List<String> generalDevSkills = [
-    "Flutter",
-    "React Native",
-    "Windows UWP",
-    "Jenkins",
-    "Docker",
-    "SQL",
-    "Unity3D",
-    "Google Cloud",
-    "Microsoft Azure",
-    "AWS",
-    "WeChat Mini Program",
-    "Alibaba Mini Program"
-  ];
-
-  List<String> perferredStack = [
-    "Kotlin ( + Coroutines)",
-    "Refrofit",
-    "Dagger",
-    "Coil",
-    "Moshi",
-    "Room",
-    "AndroidX",
-    "Jetpack",
-    "Firebase Auth",
-    "Epoxy",
-    "ViewBinding"
-  ];
-
-  List<String> learningRightNow = [
-    "Flutter",
-    "WeChat Mini Program",
-    "Alibaba Mini Program",
-    "Universal Windows Platform"
-  ];
-
   Widget _skills() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        _buildSkillSection("Android Skills", androidSkills),
-        _buildSkillSection("Other Skills", generalDevSkills),
-        _buildSkillSection("My Most Comfortable Stack", perferredStack),
-        _buildSkillSection("Learning Right now", learningRightNow),
-      ],
+      children: aboutMe.skills
+          .map((item) => _buildSkillSection(item.title, item.tags))
+          .toList(),
     );
   }
 
@@ -115,20 +50,21 @@ class _AboutScreenState extends State<AboutScreen> {
   Widget _aboutMe() {
     return Container(
         width: double.infinity,
-        decoration: BoxDecoration(color: Colors.black.withOpacity(0.25)),
-        padding: EdgeInsets.symmetric(horizontal: 150, vertical: 50),
+        decoration: BoxDecoration(color: Colors.black.withOpacity(0.5)),
+        padding: EdgeInsets.symmetric(horizontal: 150),
         child: Scrollbar(
           child: ListView(children: <Widget>[
             Container(
+              padding: EdgeInsets.only(top: 32),
               child: Text(
-                aboutMe,
+                aboutMe.header,
                 style: getFont(32),
                 textAlign: TextAlign.start,
               ),
             ),
             Container(
               child: Text(
-                aboutMeSubHeader,
+                aboutMe.subHeader,
                 style: getFont(25),
                 textAlign: TextAlign.start,
               ),
@@ -136,12 +72,13 @@ class _AboutScreenState extends State<AboutScreen> {
             Divider(height: 32),
             Container(
                 child: Text(
-              aboutMeText,
+              aboutMe.bio,
               style: getFont(18),
               textAlign: TextAlign.start,
             )),
             Divider(height: 32),
             _skills(),
+            Divider(height: 32),
           ]),
         ));
   }
