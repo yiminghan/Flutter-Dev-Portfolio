@@ -37,20 +37,68 @@ class _AboutScreenState extends State<AboutScreen> {
     "ARCore",
   ];
 
+  List<String> generalDevSkills = [
+    "Flutter",
+    "React Native",
+    "Windows UWP",
+    "Jenkins",
+    "Docker",
+    "SQL",
+    "Unity3D",
+    "Google Cloud",
+    "Microsoft Azure",
+    "AWS",
+    "WeChat Mini Program",
+    "Alibaba Mini Program"
+  ];
+
+  List<String> perferredStack = [
+    "Kotlin ( + Coroutines)",
+    "Refrofit",
+    "Dagger",
+    "Coil",
+    "Moshi",
+    "Room",
+    "AndroidX",
+    "Jetpack",
+    "Firebase Auth",
+    "Epoxy",
+    "ViewBinding"
+  ];
+
+  List<String> learningRightNow = [
+    "Flutter",
+    "WeChat Mini Program",
+    "Alibaba Mini Program",
+    "Universal Windows Platform"
+  ];
+
   Widget _skills() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Text(
-          "Skills",
-          style: getFont(32),
-          textAlign: TextAlign.start,
-        ),
-        Wrap(
-            children:
-                androidSkills.map((item) => _buildSkillChip(item)).toList()),
+        _buildSkillSection("Android Skills", androidSkills),
+        _buildSkillSection("Other Skills", generalDevSkills),
+        _buildSkillSection("My Most Comfortable Stack", perferredStack),
+        _buildSkillSection("Learning Right now", learningRightNow),
       ],
     );
+  }
+
+  Widget _buildSkillSection(String title, List<String> tags) {
+    return Column(children: <Widget>[
+      Divider(
+        height: 32,
+      ),
+      Text(
+        title,
+        style: getFont(32),
+        textAlign: TextAlign.start,
+      ),
+      Wrap(
+          alignment: WrapAlignment.center,
+          children: tags.map((item) => _buildSkillChip(item)).toList()),
+    ]);
   }
 
   Widget _buildSkillChip(String item) {
@@ -104,7 +152,7 @@ class _AboutScreenState extends State<AboutScreen> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Spacer(),
-        Expanded(flex: 6, child: _aboutMe()),
+        Expanded(flex: 8, child: _aboutMe()),
         Expanded(child: Footer())
       ],
     );
