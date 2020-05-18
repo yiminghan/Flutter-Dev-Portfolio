@@ -34,6 +34,7 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
 
   Widget _portfolioEntries() {
     return GridView.count(
+        childAspectRatio: 1,
         physics: NeverScrollableScrollPhysics(),
         shrinkWrap: true,
         crossAxisCount: 2,
@@ -43,6 +44,7 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
 
   Widget _buildPortfolioCard(PortfolioModel item) {
     return Container(
+      width: 300,
       margin: EdgeInsets.all(16),
       decoration: BoxDecoration(),
       child: Card(
@@ -55,21 +57,24 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              Center(
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(15),
-                  child: Image(
-                    fit: BoxFit.cover,
-                    image: AssetImage('assets/nanoleaf_logo.png'),
+              Expanded(
+                child: Center(
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(15),
+                    child: Image(
+                      fit: BoxFit.cover,
+                      image: AssetImage('assets/nanoleaf_logo.png'),
+                    ),
                   ),
                 ),
               ),
-              SelectableText(
+              //TODO: use selectable text once we can copy
+              Text(
                 item.title,
                 style: getFont(28),
                 textAlign: TextAlign.center,
               ),
-              SelectableText(
+              Text(
                 item.description,
                 style: getFont(22),
                 textAlign: TextAlign.start,
