@@ -24,3 +24,14 @@ class WorkModel {
   final String from;
   final String to;
 }
+
+class PortfolioModel {
+  PortfolioModel(
+      {this.title, this.description, this.workType, this.linkText, this.link});
+
+  final String title;
+  final String description;
+  final String workType;
+  final String linkText;
+  final String link;
+}

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter_dev_portfolio/models/models.dart';
 
 String _aboutMeHeader = "Hey 👋 I'm YiMing Han";
@@ -138,4 +140,22 @@ List<WorkModel> workPositions = [
     from: "May 2016",
     to: "August 2017",
   )
+];
+
+List<PortfolioModel> projectPortfolio = [
+  //Nanoleaf
+  PortfolioModel(
+      title: "Nanoleaf",
+      description:
+          "At Nanoleaf, we create smart home products that take ordinary experiences and make them extraordinary." +
+              " We do this by rethinking what is possible, and creating products that can help to improve the way we experience our everyday lives." +
+              " I lead Android Development at Nanoleaf.",
+      link: "https://nanoleaf.me",
+      linkText: "View Products"),
+  //Nanoleaf
+  PortfolioModel(
+      title: "Nanoleaf",
+      description: "I lead Android Development at Nanoleaf.",
+      link: "https://nanoleaf.me",
+      linkText: "View Products")
 ];
