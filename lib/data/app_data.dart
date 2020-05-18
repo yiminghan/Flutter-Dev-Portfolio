@@ -157,5 +157,6 @@ List<PortfolioModel> projectPortfolio = [
       title: "Nanoleaf",
       description: "I lead Android Development at Nanoleaf.",
       link: "https://nanoleaf.me",
-      linkText: "View Products")
+      linkText: "View Products",
+      logoAssetPath: "assets/nanoleaf_logo.png")
 ];

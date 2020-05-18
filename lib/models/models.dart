@@ -27,11 +27,17 @@ class WorkModel {
 
 class PortfolioModel {
   PortfolioModel(
-      {this.title, this.description, this.workType, this.linkText, this.link});
+      {this.title,
+      this.description,
+      this.workType,
+      this.linkText,
+      this.link,
+      this.logoAssetPath});
 
   final String title;
   final String description;
   final String workType;
   final String linkText;
   final String link;
+  final String logoAssetPath;
 }

@@ -14,30 +14,26 @@ class PortfolioScreen extends StatefulWidget {
 class _PortfolioScreenState extends State<PortfolioScreen> {
   Widget _portfolio() {
     return Container(
-        width: double.infinity,
-        decoration: BoxDecoration(color: Colors.black.withOpacity(0.5)),
-        padding: EdgeInsets.symmetric(horizontal: 150),
-        child: Scrollbar(
-          child: ListView(children: <Widget>[
-            Divider(height: 32),
-            Text(
-              "Stuff I made (and contributed to):",
-              style: getFont(25),
-              textAlign: TextAlign.start,
-            ),
-            Divider(height: 32),
-            _portfolioEntries(),
-            Divider(height: 32),
-          ]),
-        ));
+      width: double.infinity,
+      decoration: BoxDecoration(color: Colors.black.withOpacity(0.5)),
+      padding: EdgeInsets.symmetric(horizontal: 150),
+      child: Column(children: <Widget>[
+        Divider(height: 32),
+        Text(
+          "Stuff I made (and contributed to):",
+          style: getFont(25),
+          textAlign: TextAlign.start,
+        ),
+        Divider(height: 32),
+        Container(height: 300, child: _portfolioEntries()),
+        Divider(height: 32),
+      ]),
+    );
   }
 
   Widget _portfolioEntries() {
-    return GridView.count(
-        childAspectRatio: 1,
-        physics: NeverScrollableScrollPhysics(),
-        shrinkWrap: true,
-        crossAxisCount: 2,
+    return ListView(
+        scrollDirection: Axis.horizontal,
         children:
             projectPortfolio.map((item) => _buildPortfolioCard(item)).toList());
   }
@@ -57,17 +53,18 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              Expanded(
-                child: Center(
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(15),
-                    child: Image(
-                      fit: BoxFit.cover,
-                      image: AssetImage('assets/nanoleaf_logo.png'),
+              if (item.logoAssetPath != null)
+                Container(
+                  child: Center(
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(15),
+                      child: Image(
+                        fit: BoxFit.cover,
+                        image: AssetImage(item.logoAssetPath),
+                      ),
                     ),
                   ),
                 ),
-              ),
               //TODO: use selectable text once we can copy
               Text(
                 item.title,

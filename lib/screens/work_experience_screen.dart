@@ -39,8 +39,8 @@ class _WorkExperienceScreenState extends State<WorkExperienceScreen> {
           child: ListView(children: <Widget>[
             Divider(height: 32),
             Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              child: Wrap(
+                alignment: WrapAlignment.spaceBetween,
                 children: <Widget>[
                   Text(
                     "Places I have worked at",
@@ -76,23 +76,27 @@ class _WorkExperienceScreenState extends State<WorkExperienceScreen> {
       padding: EdgeInsets.only(top: 32),
       decoration: BoxDecoration(),
       child: Column(
+        mainAxisSize: MainAxisSize.max,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Text(
-                item.company,
-                style: getFont(28),
-                textAlign: TextAlign.start,
-              ),
-              if (item.from != null && item.to != null)
+          Container(
+            width: double.infinity,
+            child: Wrap(
+              alignment: WrapAlignment.spaceBetween,
+              children: <Widget>[
                 Text(
-                  "${item.from} - ${item.to}",
+                  item.company,
                   style: getFont(28),
-                  textAlign: TextAlign.end,
-                )
-            ],
+                  textAlign: TextAlign.start,
+                ),
+                if (item.from != null && item.to != null)
+                  Text(
+                    "${item.from} - ${item.to}",
+                    style: getFont(28),
+                    textAlign: TextAlign.center,
+                  )
+              ],
+            ),
           ),
           Text(
             item.position,
