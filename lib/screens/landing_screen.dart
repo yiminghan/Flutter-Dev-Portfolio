@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_dev_portfolio/screens/about_screen.dart';
+import 'package:flutter_dev_portfolio/screens/contact_screen.dart';
 import 'package:flutter_dev_portfolio/screens/home_screen.dart';
 import 'package:flutter_dev_portfolio/screens/portfolio_screen.dart';
 import 'package:flutter_dev_portfolio/screens/work_experience_screen.dart';
@@ -17,7 +18,7 @@ class Screens extends StatefulWidget {
 enum SideMenu { Home, About, Work, Portfolio, Contact }
 
 class _ScreensState extends State<Screens> with SingleTickerProviderStateMixin {
-  int _selectedIndex = 3;
+  int _selectedIndex = 0;
   bool _menuOpen = false;
 
   AnimationController _sideMenuController;
@@ -52,7 +53,6 @@ class _ScreensState extends State<Screens> with SingleTickerProviderStateMixin {
               minWidth: 56,
               selectedIndex: _selectedIndex,
               onDestinationSelected: (int index) {
-                print("selected destination $index");
                 setState(() {
                   _selectedIndex = index;
                 });
@@ -149,6 +149,9 @@ class _ScreensState extends State<Screens> with SingleTickerProviderStateMixin {
         return WorkExperienceScreen();
       case 3:
         return PortfolioScreen();
+        break;
+      case 4:
+        return ContactScreen();
         break;
       default:
         return HomeScreen();

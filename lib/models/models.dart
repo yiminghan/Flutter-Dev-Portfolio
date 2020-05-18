@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class AboutModel {
   AboutModel({this.header, this.subHeader, this.bio, this.skills});
 
@@ -25,6 +27,14 @@ class WorkModel {
   final String to;
 }
 
+class ResumeModel {
+  ResumeModel({this.link, this.linkText, this.defaultName});
+
+  final String linkText;
+  final String link;
+  final String defaultName;
+}
+
 class PortfolioModel {
   PortfolioModel(
       {this.title,
@@ -40,4 +50,11 @@ class PortfolioModel {
   final String linkText;
   final String link;
   final String logoAssetPath;
+}
+
+class ExternalLinkModel {
+  ExternalLinkModel({this.iconData, this.link});
+
+  final IconData iconData;
+  final String link;
 }

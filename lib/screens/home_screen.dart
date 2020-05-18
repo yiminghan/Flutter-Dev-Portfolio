@@ -1,5 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dev_portfolio/data/app_data.dart';
+import 'package:flutter_dev_portfolio/data/app_data_provider.dart';
 import 'package:flutter_dev_portfolio/utils/font_utils.dart';
 import 'package:flutter_dev_portfolio/widgets/footer.dart';
 
@@ -26,9 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           totalRepeatCount: 9999,
                           speed: Duration(milliseconds: 100),
                           pause: Duration(seconds: 5),
-                          text: [
-                            "YiMing Han. \nSoftware Developer.",
-                          ],
+                          text: getData().landingScreenTexts,
                           textStyle: getFont(25),
                           textAlign: TextAlign.start,
                           alignment: AlignmentDirectional.topStart)))

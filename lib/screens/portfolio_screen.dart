@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dev_portfolio/data/app_data.dart';
+import 'package:flutter_dev_portfolio/data/app_data_provider.dart';
 import 'package:flutter_dev_portfolio/models/models.dart';
 import 'package:flutter_dev_portfolio/utils/font_utils.dart';
 import 'package:flutter_dev_portfolio/utils/url_utils.dart';
@@ -21,7 +21,7 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
       child: ListView(children: <Widget>[
         Divider(height: 32),
         Text(
-          "Stuff I made (and contributed to):",
+          getData().portfolioHeaderText,
           style: getFont(25),
           textAlign: TextAlign.start,
         ),
@@ -38,7 +38,8 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
       child: Scrollbar(
         child: ListView(
             scrollDirection: Axis.horizontal,
-            children: projectPortfolio
+            children: getData()
+                .projectPortfolio
                 .map((item) => _buildPortfolioCard(item))
                 .toList()),
       ),

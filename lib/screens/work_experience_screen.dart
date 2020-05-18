@@ -1,7 +1,7 @@
 import 'dart:html' as html;
 
 import 'package:flutter/material.dart';
-import 'package:flutter_dev_portfolio/data/app_data.dart';
+import 'package:flutter_dev_portfolio/data/app_data_provider.dart';
 import 'package:flutter_dev_portfolio/models/models.dart';
 import 'package:flutter_dev_portfolio/utils/font_utils.dart';
 import 'package:flutter_dev_portfolio/widgets/footer.dart';
@@ -27,7 +27,7 @@ class _WorkExperienceScreenState extends State<WorkExperienceScreen> {
   }
 
   void serveResume() {
-    html.window.open("http://yiminghan.com/Resume_YiMing.pdf", 'Resume.pdf');
+    html.window.open(getData().resume.link, getData().resume.defaultName);
   }
 
   Widget _workExperience() {
@@ -43,13 +43,13 @@ class _WorkExperienceScreenState extends State<WorkExperienceScreen> {
                 alignment: WrapAlignment.spaceBetween,
                 children: <Widget>[
                   Text(
-                    "Places I have worked at",
+                    getData().workExperienceHeaderText,
                     style: getFont(25),
                     textAlign: TextAlign.start,
                   ),
                   ActionChip(
                     label: Text(
-                      "Download Resume",
+                      getData().resume.linkText,
                       style: getFont(25).copyWith(color: Colors.black),
                       textAlign: TextAlign.start,
                     ),
@@ -68,7 +68,10 @@ class _WorkExperienceScreenState extends State<WorkExperienceScreen> {
 
   Widget _workPositions() {
     return Column(
-        children: workPositions.map((item) => _buildWorkCard(item)).toList());
+        children: getData()
+            .workPositions
+            .map((item) => _buildWorkCard(item))
+            .toList());
   }
 
   Widget _buildWorkCard(WorkModel item) {

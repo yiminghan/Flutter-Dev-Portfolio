@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dev_portfolio/data/app_data_provider.dart';
 import 'package:flutter_dev_portfolio/utils/font_utils.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -23,14 +24,10 @@ class Footer extends StatelessWidget {
   Widget _externalLinks() {
     return Container(
         child: Row(
-      children: <Widget>[
-        _externalLinkButton(
-            FaIcon(FontAwesomeIcons.github), "https://github.com/yiminghan"),
-        _externalLinkButton(FaIcon(FontAwesomeIcons.linkedin),
-            "https://www.linkedin.com/in/yiming-han-7340b4b1/"),
-        _externalLinkButton(FaIcon(FontAwesomeIcons.instagram),
-            "https://www.instagram.com/yimiihan/"),
-      ],
+      children: getData()
+          .footerIcons
+          .map((item) => _externalLinkButton(FaIcon(item.iconData), item.link))
+          .toList(),
     ));
   }
 
@@ -46,8 +43,7 @@ class Footer extends StatelessWidget {
         Expanded(
           child: Align(
             alignment: AlignmentDirectional.bottomEnd,
-            child: Text("@2020 Made with ❤️ and Flutter by YiMing Han",
-                style: getFont(14)),
+            child: Text(getData().footerText, style: getFont(14)),
           ),
         )
       ],

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dev_portfolio/data/app_data.dart';
+import 'package:flutter_dev_portfolio/data/app_data_provider.dart';
 import 'package:flutter_dev_portfolio/utils/font_utils.dart';
 import 'package:flutter_dev_portfolio/widgets/footer.dart';
 
@@ -14,7 +14,9 @@ class _AboutScreenState extends State<AboutScreen> {
   Widget _skills() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: aboutMe.skills
+      children: getData()
+          .aboutMe
+          .skills
           .map((item) => _buildSkillSection(item.title, item.tags))
           .toList(),
     );
@@ -57,14 +59,14 @@ class _AboutScreenState extends State<AboutScreen> {
             Container(
               padding: EdgeInsets.only(top: 32),
               child: Text(
-                aboutMe.header,
+                getData().aboutMe.header,
                 style: getFont(32),
                 textAlign: TextAlign.start,
               ),
             ),
             Container(
               child: Text(
-                aboutMe.subHeader,
+                getData().aboutMe.subHeader,
                 style: getFont(25),
                 textAlign: TextAlign.start,
               ),
@@ -72,7 +74,7 @@ class _AboutScreenState extends State<AboutScreen> {
             Divider(height: 32),
             Container(
                 child: Text(
-              aboutMe.bio,
+              getData().aboutMe.bio,
               style: getFont(18),
               textAlign: TextAlign.start,
             )),
