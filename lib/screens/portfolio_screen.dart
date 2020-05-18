@@ -81,10 +81,13 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
                   ),
                 ),
                 FittedBox(
-                    child: Text(
-                  item.workType,
-                  style: getFont(28),
-                  textAlign: TextAlign.center,
+                    child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 8),
+                  child: Text(
+                    item.workType,
+                    style: getFont(28),
+                    textAlign: TextAlign.center,
+                  ),
                 )),
                 FittedBox(
                   child: InkWell(

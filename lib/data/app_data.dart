@@ -83,8 +83,8 @@ List<WorkModel> workPositions = [
       company: "Modiface",
       position: "Android Developer",
       bulletPoints: [
-        "Modiface primarily focuses on AR techonology to aid the beauty industry." +
-            " My primary work includes working to build out features for clients, maintaining the Android SDKs that we ship out."
+        "Modiface primarily focuses on AR techonology to aid the beauty industry.",
+        "My primary work includes working to build out features for clients, maintaining the Android SDKs that we ship out."
       ],
       from: "Jan 2020",
       to: "Present"),
@@ -95,8 +95,8 @@ List<WorkModel> workPositions = [
       position: "Android Developer",
       bulletPoints: [
         "I lead the Development of the Nanoleaf Android App.",
-        "Worked closely with the Dev team to develop the Android app for Nanoleaf (100,000+ installs). Rewriting legacy codebase to Kotlin with MVVM and redesigning the whole app architecture structure with Dynamic Feature Modules."
-            "Iterated closely with design team to constantly improve UI/UX using tools such as inVision, while keeping design modular and expandable using Material guidelines. Features include Dark Mode, AR, reactive UI with observables, etc."
+        "Worked closely with the Dev team to develop the Android app for Nanoleaf (100,000+ installs). Rewriting legacy codebase to Kotlin with MVVM and redesigning the whole app architecture structure with Dynamic Feature Modules.",
+        "Iterated closely with design team to constantly improve UI/UX using tools such as inVision, while keeping design modular and expandable using Material guidelines. Features include Dark Mode, AR, reactive UI with observables, etc."
       ],
       from: "Mar 2019",
       to: "Dec 2019"),
