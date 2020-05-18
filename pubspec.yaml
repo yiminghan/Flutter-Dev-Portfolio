@@ -55,6 +55,8 @@ flutter:
     - assets/fooi_logo.jpg
     - assets/muma_logo.png
     - assets/penguin_rush_logo.png
+    # This will be hosted in /assets/assets/
+    - assets/resume_yiming.pdf
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

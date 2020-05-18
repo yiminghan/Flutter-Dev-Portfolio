@@ -93,7 +93,7 @@ class YiMingPortfolioData extends FlutterDevPortfolioData {
 
   String workExperienceHeaderText = "Places I have worked at";
   ResumeModel resume = ResumeModel(
-      link: "http://yiminghan.com/Resume_YiMing.pdf",
+      link: "http://yiminghan.com/assets/assets/resume_yiming.pdf",
       linkText: "Download Resume",
       defaultName: "YiMing_Resume.pdf");
 
@@ -103,8 +103,9 @@ class YiMingPortfolioData extends FlutterDevPortfolioData {
         company: "Modiface",
         position: "Android Developer",
         bulletPoints: [
-          "Modiface primarily focuses on AR techonology to aid the beauty industry.",
-          "My primary work includes working to build out features for clients, maintaining the Android SDKs that we ship out."
+          "Modiface primarily focuses on Virtual Try On AR techonology to aid the beauty industry.",
+          "I primarily build out features and demos for clients, while maintain the AR SDKs that we ship out.",
+          "SDK platforms I maintain include Android, React Native, and Windows"
         ],
         from: "Jan 2020",
         to: "Present"),
@@ -114,9 +115,9 @@ class YiMingPortfolioData extends FlutterDevPortfolioData {
         company: "Nanoleaf",
         position: "Android Developer",
         bulletPoints: [
-          "I lead the Development of the Nanoleaf Android App.",
-          "Worked closely with the Dev team to develop the Android app for Nanoleaf (100,000+ installs). Rewriting legacy codebase to Kotlin with MVVM and redesigning the whole app architecture structure with Dynamic Feature Modules.",
-          "Iterated closely with design team to constantly improve UI/UX using tools such as inVision, while keeping design modular and expandable using Material guidelines. Features include Dark Mode, AR, reactive UI with observables, etc."
+          "I lead the Development of the Nanoleaf Android App (100,000+ installs).",
+          "I rewrote legacy codebase to Kotlin with MVI and Dynamic Feature Modules.",
+          "Features include Dark Mode, ARCore, reactive UI with observables, and of course, network communication through local network."
         ],
         from: "Mar 2019",
         to: "Dec 2019"),
@@ -127,8 +128,7 @@ class YiMingPortfolioData extends FlutterDevPortfolioData {
         position: "Android Developer",
         bulletPoints: [
           "I lead the Development of the FOOI Android App.",
-          "Worked closely with entire team to iterate on designs and key components of the app.",
-          "Trained another co-op student and worked with him side-by-side to provide mentorship and support."
+          "Features include Braintree payment, firebase authentication, and biological security.",
         ],
         from: "Feb 2018",
         to: "Feb 2019"),
@@ -138,10 +138,10 @@ class YiMingPortfolioData extends FlutterDevPortfolioData {
       company: "Team Muma / UofT Innovation Lab",
       position: "Founder",
       bulletPoints: [
-        "Worked with a team of 5 to develop a machine learning model that separate human voice from an audio input.",
-        "Designed and built the backend structure for Muma, a service that identifies cover song music using machine learning model and allows music societies to capture more revenue.",
+        "I worked with a team of five to develop a machine learning model that separate human voice from an audio input.",
+        "I designed and built the backend structure for Muma, a service that identifies cover song music using machine learning model and allows music societies to capture more revenue.",
         "Automated and packaged services into Docker containers and hosted on Microsoft Azure.",
-        "Participated and won the Canadian Runner-up for Microsoft Imagine Cup Canadian Finals 2018, and advanced as a Global Finalist."
+        "We participated and won the Canadian Runner-up for Microsoft Imagine Cup Canadian Finals 2018, and advanced as a Global Finalist."
       ],
       from: "Jan 2018",
       to: "Dec 2018",
@@ -151,11 +151,8 @@ class YiMingPortfolioData extends FlutterDevPortfolioData {
       company: "Finastra",
       position: "DevOps Developer Co-op",
       bulletPoints: [
-        "Worked closely with Dev team to implement cloud environments setup and deployment automation (including disaster recovery) for Barometer application independently.",
+        "I worked closely with Dev team to implement cloud environments setup and deployment automation (including disaster recovery) for Barometer application.",
         "Automated and supported continuous software builds and deployments for 5+ projects during development phase, including Dev, QA, UAT and Production (Full, Patch builds).",
-        "Documented all procedures related to the processes and tools developed and hosted knowledge transfer sessions to enable more productivity from new team members.",
-        "Conducted and implemented build scripts design sessions and code reviews/walkthroughs.",
-        "Interviewed, recruited, and trained two new co-op students to replace my position."
       ],
       from: "May 2016",
       to: "August 2017",
