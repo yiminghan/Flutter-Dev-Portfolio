@@ -35,11 +35,13 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
   Widget _portfolioEntries() {
     return Container(
       height: MediaQuery.of(context).size.height / 2,
-      child: ListView(
-          scrollDirection: Axis.horizontal,
-          children: projectPortfolio
-              .map((item) => _buildPortfolioCard(item))
-              .toList()),
+      child: Scrollbar(
+        child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: projectPortfolio
+                .map((item) => _buildPortfolioCard(item))
+                .toList()),
+      ),
     );
   }
 
@@ -65,7 +67,7 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
                           topLeft: Radius.circular(15),
                           topRight: Radius.circular(15)),
                       child: Image(
-                        fit: BoxFit.cover,
+                        fit: BoxFit.contain,
                         image: AssetImage(item.logoAssetPath),
                       ),
                     ),

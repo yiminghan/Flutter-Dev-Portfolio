@@ -143,7 +143,7 @@ List<WorkModel> workPositions = [
 ];
 
 List<PortfolioModel> projectPortfolio = [
-  //Nanoleaf
+  /// Nanoleaf
   PortfolioModel(
       title: "Nanoleaf",
       workType: "Android Development",
@@ -151,5 +151,36 @@ List<PortfolioModel> projectPortfolio = [
       link:
           "https://play.google.com/store/apps/details?id=me.nanoleaf.nanoleaf",
       linkText: "View Play Store",
-      logoAssetPath: "assets/nanoleaf_logo.png")
+      logoAssetPath: "assets/nanoleaf_logo.png"),
+
+  /// FOOI
+  PortfolioModel(
+      title: "FOOI",
+      workType: "Android Development",
+      description: "I lead Android Development at FOOI.",
+      link: "https://play.google.com/store/apps/details?id=com.fooi",
+      linkText: "View Play Store",
+      logoAssetPath: "assets/fooi_logo.jpg"),
+
+  /// Muma
+  PortfolioModel(
+      title: "Muma",
+      workType: "ML / Backend Development",
+      description:
+          "Muma placed second place in Microsoft Imagine Cup 2018 Canadian Finals, advancing as a Global Finalist.",
+      link:
+          "https://imaginecup.microsoft.com/en-us/Team/eb66f6b4-5037-41bb-a940-f44ceba21aa8",
+      linkText: "View Contest Page",
+      logoAssetPath: "assets/muma_logo.png"),
+
+  /// Muma
+  PortfolioModel(
+      title: "Penguin Rush",
+      workType: "Unity3D Development",
+      description:
+          "Penguin Rush is a game made by University of Toronto and Centennial College students using the Unity Engine." +
+              " This game is showcased at Level Up Showcase 2018.",
+      link: "https://www.youtube.com/watch?v=o4CNXGsTZmU&t=",
+      linkText: "View Game Trailer",
+      logoAssetPath: "assets/penguin_rush_logo.png")
 ];
