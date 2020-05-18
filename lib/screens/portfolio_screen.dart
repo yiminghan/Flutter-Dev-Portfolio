@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dev_portfolio/data/app_data.dart';
 import 'package:flutter_dev_portfolio/models/models.dart';
 import 'package:flutter_dev_portfolio/utils/font_utils.dart';
+import 'package:flutter_dev_portfolio/utils/url_utils.dart';
 import 'package:flutter_dev_portfolio/widgets/footer.dart';
 
 class PortfolioScreen extends StatefulWidget {
@@ -17,7 +18,7 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
       width: double.infinity,
       decoration: BoxDecoration(color: Colors.black.withOpacity(0.5)),
       padding: EdgeInsets.symmetric(horizontal: 150),
-      child: Column(children: <Widget>[
+      child: ListView(children: <Widget>[
         Divider(height: 32),
         Text(
           "Stuff I made (and contributed to):",
@@ -25,58 +26,84 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
           textAlign: TextAlign.start,
         ),
         Divider(height: 32),
-        Container(height: 300, child: _portfolioEntries()),
+        Container(child: _portfolioEntries()),
         Divider(height: 32),
       ]),
     );
   }
 
   Widget _portfolioEntries() {
-    return ListView(
-        scrollDirection: Axis.horizontal,
-        children:
-            projectPortfolio.map((item) => _buildPortfolioCard(item)).toList());
+    return Container(
+      height: MediaQuery.of(context).size.height / 2,
+      child: ListView(
+          scrollDirection: Axis.horizontal,
+          children: projectPortfolio
+              .map((item) => _buildPortfolioCard(item))
+              .toList()),
+    );
   }
 
   Widget _buildPortfolioCard(PortfolioModel item) {
     return Container(
-      width: 300,
       margin: EdgeInsets.all(16),
-      decoration: BoxDecoration(),
-      child: Card(
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(15))),
-        color: Colors.white.withOpacity(0.2),
-        child: Container(
-          padding: EdgeInsets.all(16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              if (item.logoAssetPath != null)
-                Container(
-                  child: Center(
+      child: AspectRatio(
+        aspectRatio: 1,
+        child: Card(
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(15))),
+          color: Colors.white.withOpacity(0.2),
+          child: Container(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                if (item.logoAssetPath != null)
+                  AspectRatio(
+                    aspectRatio: 3 / 1,
                     child: ClipRRect(
-                      borderRadius: BorderRadius.circular(15),
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(15),
+                          topRight: Radius.circular(15)),
                       child: Image(
                         fit: BoxFit.cover,
                         image: AssetImage(item.logoAssetPath),
                       ),
                     ),
                   ),
+                //TODO: use selectable text once we can copy
+                FittedBox(
+                  child: Text(
+                    item.title,
+                    style: getFont(28),
+                    textAlign: TextAlign.center,
+                  ),
                 ),
-              //TODO: use selectable text once we can copy
-              Text(
-                item.title,
-                style: getFont(28),
-                textAlign: TextAlign.center,
-              ),
-              Text(
-                item.description,
-                style: getFont(22),
-                textAlign: TextAlign.start,
-              ),
-            ],
+                FittedBox(
+                    child: Text(
+                  item.workType,
+                  style: getFont(28),
+                  textAlign: TextAlign.center,
+                )),
+                FittedBox(
+                  child: InkWell(
+                    child: Container(
+                      padding: EdgeInsets.symmetric(horizontal: 5),
+                      decoration: ShapeDecoration(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(5))),
+                        color: Colors.white,
+                      ),
+                      child: Text(
+                        item.linkText,
+                        style: getFont(14).copyWith(color: Colors.black),
+                        textAlign: TextAlign.start,
+                      ),
+                    ),
+                    onTap: () => {launchURL(item.link)},
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),

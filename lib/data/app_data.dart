@@ -146,17 +146,10 @@ List<PortfolioModel> projectPortfolio = [
   //Nanoleaf
   PortfolioModel(
       title: "Nanoleaf",
-      description:
-          "At Nanoleaf, we create smart home products that take ordinary experiences and make them extraordinary." +
-              " We do this by rethinking what is possible, and creating products that can help to improve the way we experience our everyday lives." +
-              " I lead Android Development at Nanoleaf.",
-      link: "https://nanoleaf.me",
-      linkText: "View Products"),
-  //Nanoleaf
-  PortfolioModel(
-      title: "Nanoleaf",
+      workType: "Android Development",
       description: "I lead Android Development at Nanoleaf.",
-      link: "https://nanoleaf.me",
-      linkText: "View Products",
+      link:
+          "https://play.google.com/store/apps/details?id=me.nanoleaf.nanoleaf",
+      linkText: "View Play Store",
       logoAssetPath: "assets/nanoleaf_logo.png")
 ];
