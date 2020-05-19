@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dev_portfolio/data/app_data_provider.dart';
+import 'package:flutter_dev_portfolio/utils/dimen_utils.dart';
 import 'package:flutter_dev_portfolio/utils/font_utils.dart';
 import 'package:flutter_dev_portfolio/widgets/footer.dart';
 
@@ -53,7 +54,8 @@ class _AboutScreenState extends State<AboutScreen> {
     return Container(
         width: double.infinity,
         decoration: BoxDecoration(color: Colors.black.withOpacity(0.5)),
-        padding: EdgeInsets.symmetric(horizontal: 150),
+        padding:
+            EdgeInsets.symmetric(horizontal: getMainHorizontalPadding(context)),
         child: Scrollbar(
           child: ListView(children: <Widget>[
             Container(
