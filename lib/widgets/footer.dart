@@ -24,6 +24,7 @@ class Footer extends StatelessWidget {
   Widget _externalLinks() {
     return Container(
         child: Row(
+      crossAxisAlignment: CrossAxisAlignment.end,
       children: getData()
           .footerIcons
           .map((item) => _externalLinkButton(FaIcon(item.iconData), item.link))
@@ -34,18 +35,19 @@ class Footer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        child: Row(
-      crossAxisAlignment: CrossAxisAlignment.end,
+        child: Stack(
       children: <Widget>[
-        Expanded(
-          child: _externalLinks(),
-        ),
         Expanded(
           child: Align(
             alignment: AlignmentDirectional.bottomEnd,
             child: Text(getData().footerText, style: getFont(14)),
           ),
-        )
+        ),
+        Expanded(
+            child: Align(
+          alignment: AlignmentDirectional.bottomStart,
+          child: _externalLinks(),
+        )),
       ],
     ));
   }
