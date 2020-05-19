@@ -37,17 +37,14 @@ class Footer extends StatelessWidget {
     return Container(
         child: Stack(
       children: <Widget>[
-        Expanded(
-          child: Align(
-            alignment: AlignmentDirectional.bottomEnd,
-            child: Text(getData().footerText, style: getFont(14)),
-          ),
+        Align(
+          alignment: AlignmentDirectional.bottomEnd,
+          child: Text(getData().footerText, style: getFont(14)),
         ),
-        Expanded(
-            child: Align(
+        Align(
           alignment: AlignmentDirectional.bottomStart,
           child: _externalLinks(),
-        )),
+        ),
       ],
     ));
   }
