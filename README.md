@@ -2,6 +2,8 @@
 
 This is a simple developer portfolio website made with Flutter Web!
 
+Sample demo site: https://yiminghan.com
+
 ## Flutter Web Setup
 
 Follow the official flutter site to setup flutter for web: 
@@ -27,4 +29,9 @@ To host on gcloud, make sure you download all the command line tools first and h
 
 Once you have setup your gcloud commandline, simply run `deploy.sh` and you are good to go!
 
+## Bugs and feature requests
 
+Have a bug or a feature request? Please first read the issue guidelines and search for existing and closed issues. If your problem or idea is not addressed yet, [please open a new issue](https://github.com/yiminghan/Flutter-Dev-Portfolio/issues/new)
+
+## Copyright and License 
+Code released under the [MIT License](LICENSE).
