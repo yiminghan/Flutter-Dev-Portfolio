@@ -1,0 +1,19 @@
+{
+  "name": "yiminghansite",
+  "version": "1.0.0",
+  "description": "myFirstSite",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "keywords": [],
+  "license": "MIT",
+  "devDependencies": {
+    "express": "^4.16.3"
+  },
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
