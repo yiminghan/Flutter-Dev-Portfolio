@@ -1,6 +1,13 @@
-# Flutter Dev Portfolio
+# Flutter Dev Portfolio  [![GitHub](https://img.shields.io/github/license/yiminghan/Flutter-Dev-Portfolio?color=blue)](https://github.com/yiminghan/Flutter-Dev-Portfolio/blob/master/LICENSE)
 
 This is a simple developer portfolio website made with Flutter Web!
+
+## Sections 
+✔️ Landing Page\
+✔️ About Me \
+✔️ Work experience\
+✔️ Projects Showcase\
+✔️ Contact me\
 
 Sample demo site: https://yiminghan.com
 
