@@ -162,6 +162,16 @@ class YiMingPortfolioData extends FlutterDevPortfolioData {
   String portfolioHeaderText = "Stuff I made (and contributed to):";
 
   List<PortfolioModel> projectPortfolio = [
+    /// HalfWay
+    PortfolioModel(
+        title: "HalfWay",
+        workType: "Flutter Development",
+        description: "Personal Flutter Project.",
+        link:
+            "https://play.google.com/store/apps/details?id=com.yiminghan.halfway",
+        linkText: "View Play Store",
+        logoAssetPath: "assets/halfway_logo.png"),
+
     /// Nanoleaf
     PortfolioModel(
         title: "Nanoleaf",

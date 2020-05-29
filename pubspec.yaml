@@ -55,6 +55,7 @@ flutter:
     - assets/fooi_logo.jpg
     - assets/muma_logo.png
     - assets/penguin_rush_logo.png
+    - assets/halfway_logo.png
     # This will be hosted in /assets/assets/
     - assets/resume_yiming.pdf
 
