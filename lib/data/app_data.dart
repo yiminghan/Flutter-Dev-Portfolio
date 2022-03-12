@@ -30,7 +30,7 @@ class YiMingPortfolioData extends FlutterDevPortfolioData {
   static const String _aboutMeText =
       "I'm a Problem Solver first, Developer second. To me, programming languages and frameworks are just tools to solve problems." +
           " I do not hesistate to learn new techonolgies neccessary to solve the Problem at hand.\n\n" +
-          "I am currently 24, and I have been developing for almost 5 years." +
+          "I am currently 26, and I have been developing for almost 7 years." +
           " Even outside of my work I find myself building cool apps and contributing to open source projects." +
           " My current focus is on Mobile Develoment.\n\n" +
           "When I'm not writing code I spend time with Dota2, Kendo, and Photography.";
@@ -100,6 +100,18 @@ class YiMingPortfolioData extends FlutterDevPortfolioData {
   List<WorkModel> workPositions = [
     /// Modiface
     WorkModel(
+        company: "Snap Inc.",
+        position: "Senior Android Developer",
+        bulletPoints: [
+          "Working on the Bitmoji Stickers team.",
+          "Leading the development of notable features, including Customoji in Snapchat Preview, Customoji on Bitmoji Keyboard, and Bitmoji Search Library.",
+          "Features shipped to millions of users on Snapchat/Bitmoji App, resulting in increase in Bitmoji Sticker engagement by 10%+."
+        ],
+        from: "Feb 2021",
+        to: "Present"),
+
+    /// Modiface
+    WorkModel(
         company: "Modiface",
         position: "Android Developer",
         bulletPoints: [
@@ -108,7 +120,7 @@ class YiMingPortfolioData extends FlutterDevPortfolioData {
           "SDK platforms I maintain include Android, React Native, and Windows"
         ],
         from: "Jan 2020",
-        to: "Present"),
+        to: "Jan 2021"),
 
     /// Nanoleaf
     WorkModel(
@@ -220,7 +232,7 @@ class YiMingPortfolioData extends FlutterDevPortfolioData {
     "Phone: (1)-416-732-0702"
   ];
 
-  String footerText = "@2020 Made with ❤️ and Flutter by YiMing Han";
+  String footerText = "@2022 Made with ❤️ and Flutter by YiMing Han";
   List<ExternalLinkModel> footerIcons = [
     ExternalLinkModel(
         iconData: FontAwesomeIcons.github,
