@@ -26,11 +26,11 @@ class YiMingPortfolioData extends FlutterDevPortfolioData {
 
   static const String _aboutMeHeader = "Hey 👋 I'm YiMing Han";
   static const String _aboutMeSubHeader =
-      "A Senior Mobile Developer from Toronto 🇨🇦";
+      "A Senior Software Developer from Toronto 🇨🇦";
   static const String _aboutMeText =
       "I'm a Problem Solver first, Developer second. To me, programming languages and frameworks are just tools to solve problems." +
           " I do not hesistate to learn new techonolgies neccessary to solve the Problem at hand.\n\n" +
-          "I am currently 26, and I have been developing for almost 7 years." +
+          "I am currently 27, and I have been developing for almost 7 years." +
           " Even outside of my work I find myself building cool apps and contributing to open source projects." +
           " My current focus is on Mobile Develoment.\n\n" +
           "When I'm not writing code I spend time with Dota2, Kendo, and Photography.";
@@ -101,11 +101,12 @@ class YiMingPortfolioData extends FlutterDevPortfolioData {
     /// Modiface
     WorkModel(
         company: "Snap Inc.",
-        position: "Senior Android Developer",
+        position: "Senior Software Developer",
         bulletPoints: [
-          "Working on the Bitmoji Stickers team.",
-          "Leading the development of notable features, including Customoji in Snapchat Preview, Customoji on Bitmoji Keyboard, and Bitmoji Search Library.",
-          "Features shipped to millions of users on Snapchat/Bitmoji App, resulting in increase in Bitmoji Sticker engagement by 10%+."
+          "Working on the Bitmoji Platform Team as a Bitmoji Stickers tech lead. Currently working on Bitmoji 3D Migration.",
+          "Responsibilities include: architecture and design new features, maintain operational excellence, work with cross-functional teams and set feature roadmaps, etc.",
+          "Grew overall Bitmoji sticker engagement by 40% via various feature and search library improvements.",
+          "Some major projects that I led: (many smaller features are omitted): \n    Customoji in Snapchat Preview \n    Customoji on Bitmoji Keyboard \n    C++ Rewrite of Snapchat’s Client Search Library \n    Backend 3D Bitmoji Sticker Batch Rendering \n    Client side 3D Bitmoji Sticker Rendering"
         ],
         from: "Feb 2021",
         to: "Present"),
